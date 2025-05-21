@@ -1,0 +1,17 @@
+{
+  "service": {
+    "name": "Fundme-Org",
+    "logger": {
+      "environment": "development",
+      "level": "info"
+    },
+    "tracer": {
+      "endpoint": "localhost:4317",
+      "serviceName": "ose-micro",
+      "sampleRatio": 1.0
+    }
+  },
+  "redis": {
+    "address": ""
+  }
+}
