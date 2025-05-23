@@ -89,12 +89,13 @@ func Load(opts ...Option) (*Config, error) {
 }
 
 func callerDir() (string, error) {
-	// Walk up the stack until we’re outside the oseconfig package
+	// Walk up the stack until we’re outside the core package
 	for i := 1; i < 10; i++ {
 		_, file, _, ok := runtime.Caller(i)
 		if !ok {
 			break
 		}
+		
 		if !strings.Contains(file, "config") {
 			return filepath.Dir(file), nil
 		}
