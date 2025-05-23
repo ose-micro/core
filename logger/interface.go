@@ -1,5 +1,7 @@
 package logger
 
+import "go.uber.org/zap"
+
 // Config holds configuration options for creating a new zapLogger.
 type Config struct {
 	// Environment specifies the deployment environment: e.g. "Production" or "Development".
@@ -16,4 +18,5 @@ type Logger interface {
 	Debug(msg string, keysAndValues ...any)
 	Fatal(msg string, keysAndValues ...any)
 	Panic(msg string, keysAndValues ...any)
+	Zap() *zap.Logger
 }

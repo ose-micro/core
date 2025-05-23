@@ -11,6 +11,11 @@ type zapLogger struct {
 	logger *zap.Logger
 }
 
+// Zap implements Logger.
+func (z *zapLogger) Zap() *zap.Logger {
+	return z.logger
+}
+
 // Fatal implements Logger.
 func (z *zapLogger) Fatal(msg string, keysAndValues ...any) {
 	z.logger.Sugar().Fatalw(msg, keysAndValues...)
