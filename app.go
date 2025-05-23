@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/ose-micro/core/logger"
+	"github.com/ose-micro/core/timestamp"
 	"github.com/ose-micro/core/tracing"
 	"go.uber.org/fx"
 )
@@ -26,6 +27,7 @@ func New(additional ...fx.Option) App {
 		fx.Provide(
 			logger.NewZap,
 			tracing.NewOtel,
+			timestamp.NewTimestamp,
 		),
 		fx.Invoke(registerLifecycleHooks),
 	)
