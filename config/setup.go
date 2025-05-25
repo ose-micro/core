@@ -95,7 +95,7 @@ func callerDir() (string, error) {
 		if !ok {
 			break
 		}
-		
+
 		if !strings.Contains(file, "config") {
 			return filepath.Dir(file), nil
 		}
