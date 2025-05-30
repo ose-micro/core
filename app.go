@@ -11,6 +11,8 @@ import (
 
 type App interface {
 	Run()
+	Start(ctx context.Context) error
+	Stop(ctx context.Context) error
 }
 
 type app struct {
@@ -20,6 +22,16 @@ type app struct {
 // Run implements App.
 func (a *app) Run() {
 	a.app.Run()
+}
+
+// Start implements App.
+func (a *app) Start(ctx context.Context) error {
+	return a.app.Start(ctx)
+}
+
+// Stop implements App.
+func (a *app) Stop(ctx context.Context) error {
+	return a.app.Stop(ctx)
 }
 
 func New(additional ...fx.Option) App {
