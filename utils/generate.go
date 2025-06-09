@@ -2,6 +2,7 @@ package utils
 
 import (
 	"crypto/rand"
+	"encoding/base64"
 	"fmt"
 	"strings"
 	"time"
@@ -49,4 +50,25 @@ func GenerateSlug(value string) string {
 		return -1
 	}, value)
 	return strings.ToLower(strings.ReplaceAll(value, " ", "-"))
+}
+
+func GenerateKey(prefix string, length int) (string, error) {
+	byteLength := length * 3 / 4
+
+	// Generate random bytes
+	b := make([]byte, byteLength)
+	_, err := rand.Read(b)
+	if err != nil {
+		return "", err
+	}
+
+	// Encode in URL-safe base64 and strip padding
+	encoded := base64.URLEncoding.WithPadding(base64.NoPadding).EncodeToString(b)
+
+	// Ensure it's exactly the desired length (trim if needed)
+	if len(encoded) > length {
+		encoded = encoded[:length]
+	}
+
+	return prefix + encoded, nil
 }
