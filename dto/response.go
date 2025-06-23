@@ -1,7 +1,7 @@
 package dto
 
 type Response[T any] struct {
-	Name    string
+	Message string
 	Records []T
 	Record  T
 }
