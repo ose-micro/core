@@ -73,7 +73,7 @@ type ComputedField struct {
 	Operands []string         `json:"operands" validate:"required,min=1"`
 }
 
-type FacetQuery struct {
+type Query struct {
 	Name           string          `json:"name" validate:"required"`
 	Filters        []Filter        `json:"filters"`
 	GroupBy        []string        `json:"group_by"`
@@ -85,6 +85,8 @@ type FacetQuery struct {
 }
 
 type Request struct {
-	Name   string       `json:"collection_name"`
-	Facets []FacetQuery `json:"facets"`
+	Filters []Filter     `json:"filters"`
+	Sort    []SortOption `json:"sort"`
+	Skip    int64        `json:"skip"`
+	Limit   int64        `json:"limit"`
 }
