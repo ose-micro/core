@@ -85,8 +85,5 @@ type Query struct {
 }
 
 type Request struct {
-	Filters []Filter     `json:"filters"`
-	Sort    []SortOption `json:"sort"`
-	Skip    int64        `json:"skip"`
-	Limit   int64        `json:"limit"`
+	Queries []Query `json:"query"`
 }
