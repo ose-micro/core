@@ -73,17 +73,26 @@ type ComputedField struct {
 	Operands []string         `json:"operands" validate:"required,min=1"`
 }
 
+type QueryType string
+
+const (
+	QueryTypeRecord  QueryType = "record"
+	QueryTypeSummary QueryType = "summary"
+)
+
 type Query struct {
 	Name           string          `json:"name" validate:"required"`
 	Filters        []Filter        `json:"filters"`
+	Type           QueryType       `json:"type"`
 	GroupBy        []string        `json:"group_by"`
 	Aggregations   []Aggregation   `json:"aggregations"`
 	Sort           []SortOption    `json:"sort"`
 	ComputedFields []ComputedField `json:"computed_fields"`
 	Skip           int64           `json:"skip"`
 	Limit          int64           `json:"limit"`
+	ReturnType     string          `json:"return_type"`
 }
 
 type Request struct {
-	Queries []Query `json:"query"`
+	Queries []Query `json:"facets"`
 }
