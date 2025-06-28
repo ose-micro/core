@@ -80,6 +80,11 @@ const (
 	QueryTypeSummary QueryType = "summary"
 )
 
+type Summary struct {
+	ID     any                    `json:"id,omitempty"`
+	Fields map[string]interface{} `json:"fields,omitempty"`
+}
+
 type Query struct {
 	Name           string          `json:"name" validate:"required"`
 	Filters        []Filter        `json:"filters"`
